@@ -56,6 +56,18 @@ For MCP client config, point the server command at `uvx`:
 
 You can configure adapter paths with environment variables or `mcp-dap.toml`.
 
+### Rust evaluate tip (CodeLLDB)
+
+When using the Rust adapter (`rust`/`codelldb`), expression evaluation in `repl` context is handled by LLDB's command console.
+
+- Prefix expressions with `?` to evaluate as Rust expressions.
+- Example: `? cli.steps`
+- Example: `? cli`
+
+Without the `?` prefix, LLDB may interpret input as a debugger command and return errors like `'cli' is not a valid command`.
+
+If local variables appear empty at a breakpoint, set the breakpoint one or two lines after variable initialization and try again.
+
 Example:
 
 ```toml

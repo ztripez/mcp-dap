@@ -87,7 +87,12 @@ class CodeLLDBAttachConfig(BaseAttachConfig):
     aliases=["lldb", "rust"],
 )
 class CodeLLDBAdapter(AdapterConfig):
-    """Rust/C/C++ debugger (LLDB). Use for Rust with cargo_args or pre-built binaries."""
+    """Rust/C/C++ debugger (LLDB). Use for Rust with cargo_args or pre-built binaries.
+
+    Evaluate tip: in ``debug_evaluate`` with ``context='repl'``, prefix Rust expressions
+    with ``?`` (for example, ``? cli.steps``). CodeLLDB treats bare input as an LLDB
+    command, which can return command errors instead of expression results.
+    """
 
     def __init__(self, codelldb_path: str | None = None) -> None:
         """Initialize CodeLLDB adapter.
